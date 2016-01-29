@@ -17,17 +17,17 @@ include('inc/begin.php');
 				<table class="center">
 				
 				<tr>
-					<th>Bug</th>
+					<th><a href="?sort=bug_id">#</a></th>
 					<th>Nom</th>
 					<th>Assigné à</th>
-					<th>Dernière Modif</th>
+					<th><a href="?sort=last_date">Mise à jour</a></th>
 				</tr>
 			
 				<?php $bugs = $conn->query("SELECT * FROM bugs WHERE state != 100;"); ?>
 				<?php while ( $bug = mysqli_fetch_array($bugs) ) { ?>
 				<tr>
-					<td><?php echo $bug['bug_id']; ?></td>
-					<td><?php echo $bug['bug_name']; ?></td>
+					<td><a href="bug.php?bug_id=<?php echo $bug['bug_id']; ?>"><?php echo $bug['bug_id']; ?></a></td>
+					<td><a href="bug.php?bug_id=<?php echo $bug['bug_id']; ?>"><?php echo $bug['bug_name']; ?></a></td>
 					<td><?php echo $bug['assign_to']; ?></td>
 					<td><?php echo $bug['last_date']; ?></td>
 				</tr>

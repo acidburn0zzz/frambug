@@ -23,7 +23,7 @@ include('inc/begin.php');
 					<tr><td align="right">
 					<label>Description : </label>
 					</td><td>
-					<textarea name="bug_text" rows="20" cols="70" required value="" ></textarea>
+					<textarea name="bug_text" rows="20" cols="70" value="" ></textarea>
 					</td></tr>
 
 					<tr><td align="right">

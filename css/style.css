@@ -30,8 +30,16 @@ h2{
 	text-align: center;
 	color: #bb713a;
 }
+th a {
+	text-decoration:none;
+	color:#E9AA7A;
+}
+th a:hover {
+        text-decoration:none;
+        color:#CA8958;
+}
 a {
-	text-decoration:underline;
+	text-decoration:none;
 	color:#bb713a;
 }
 a:hover {
@@ -147,7 +155,9 @@ a:hover {
 .bg-gris{
 	background-color: #999;
 }
-
+.bold{
+	font-weight: bold;
+}
 /* WELCOME */
 #welcome{
 	text-align:center;

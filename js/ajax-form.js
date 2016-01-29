@@ -5,16 +5,18 @@ $(document).ready(function() {
     // Lorsque je soumets le formulaire
     $('#formopenbug').on('submit', function(e) {
         e.preventDefault(); // J'empêche le comportement par défaut du navigateur, c-à-d de soumettre le formulaire
- 
+
+	tinyMCE.get("bug_text").save(); // Nécessaire pour valider le tinymce
+
         var $this = $(this); // L'objet jQuery du formulaire
  
         // Je récupère les valeurs
         var bug_name = $('#bug_name').val();
         var bug_text = $('#bug_text').val();
- 
+
         // Je vérifie une première fois pour ne pas lancer la requête HTTP
         // si je sais que mon PHP renverra une erreur
-        if(bug_name == '' || bug_name == '' ) {
+        if(bug_name == '' || bug_text == '' ) {
             alert('Les champs doivent êtres remplis');
         } else {
             // Envoi de la requête HTTP en mode asynchrone

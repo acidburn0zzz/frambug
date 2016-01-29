@@ -11,7 +11,26 @@ include('sql_open.php');
 		<script src="js/jquery-1.11.3.min.js"></script>	
 		<script src="js/ajax-form.js"></script>			
 		<link rel="stylesheet" href="css/style.css" type="text/css" />
-		
+	
+		<!-- Code pour TinyMCE -->
+		<script src="plugins/tinymce/tinymce.min.js"></script>
+		<script>
+		tinymce.init({
+			mode : "textareas",
+			//height: 500,
+			plugins: [
+				'advlist autolink lists link image charmap print preview anchor',
+				'searchreplace visualblocks code fullscreen',
+				'insertdatetime media table contextmenu paste code'
+			],
+			toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+			language : "fr_FR",
+			menubar: false,
+			statusbar: false,
+		});	
+		</script>
+
+		<!-- Fin code TinyMCE -->
 
 	</head>
 	
@@ -20,7 +39,7 @@ include('sql_open.php');
 			<ul id="navigation">
 				<li><a href="index.php" title="Accueil">Accueil</a></li>
 				<li><a href="open.php" title="Ouvrir un bug">Ouvrir un bug</a></li>
-				
+				<li><a href="list.php" title="Liste des bugs">Liste des bugs</a></li>	
 				
 				<li><a href="admin.php"> Admin</a></li>
 			</ul>
