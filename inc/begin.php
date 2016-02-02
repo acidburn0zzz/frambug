@@ -39,7 +39,8 @@ include('sql_open.php');
 			<ul id="navigation">
 				<li><a href="index.php" title="Accueil">Accueil</a></li>
 				<li><a href="open.php" title="Ouvrir un bug">Ouvrir un bug</a></li>
-				<li><a href="list.php" title="Liste des bugs">Liste des bugs</a></li>	
+				<li><a href="list.php" title="Liste des bugs">Liste des bugs</a></li>
+				<li><a href="category.php" title="Liste des catégories">Liste des catégories</a></li>
 				
 				<li><a href="admin.php"> Admin</a></li>
 			</ul>

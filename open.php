@@ -30,7 +30,11 @@ include('inc/begin.php');
 					<label>Catégorie : </label>
 					</td><td>
 					<select name="cat_id">
-						<option value=""></option>
+						<option value="0"></option>
+						<?php $cats = $conn->query("SELECT * FROM categories ORDER BY cat_name;"); ?>
+						<?php while ( $cat = mysqli_fetch_array($cats) ) { ?>
+						<option value="<?php echo $cat['cat_id']; ?>"><?php echo $cat['cat_name']; ?></option>
+						<?php } // Fin  while ( $cat = mysqli_fetch_array($cats) ) { ?>
 					</select>
 					</td></tr>
 					
@@ -38,7 +42,11 @@ include('inc/begin.php');
 					<label>Assigner à : </label>
 					</td><td>
 					<select name="assign_to">
-						<option value=""></option>
+						<option value="0"></option>
+						<?php $users = $conn->query("SELECT * FROM users WHERE level > 1 ORDER BY realname;"); ?>
+						<?php while ( $user = mysqli_fetch_array($users) ) { ?>
+						<option value="<?php echo $user['user_id']; ?>"><?php echo $user['realname']; ?></option>
+						<?php } // Fin  while ( $user = mysqli_fetch_array($users) ) ?>
 					</select>
 					</td></tr>
 

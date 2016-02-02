@@ -5,7 +5,7 @@ include('inc/begin.php');
 		<div id="corps">
 	
 			<div id="welcome">
-				<h1>Frambug : Liste des bugs</h1> 
+				<h1>Frambug : Liste des categories</h1> 
 			</div>
 
 			<div id="message">
@@ -19,17 +19,13 @@ include('inc/begin.php');
 				<tr>
 					<th><a href="?sort=bug_id">#</a></th>
 					<th>Nom</th>
-					<th>Assigné à</th>
-					<th><a href="?sort=last_date">Mise à jour</a></th>
 				</tr>
 			
-				<?php $bugs = $conn->query("SELECT bug_id, bug_name, u.realname AS assign_to, last_date FROM bugs b LEFT JOIN users u ON b.assign_to=u.user_id WHERE state != 100;"); ?>
-				<?php while ( $bug = mysqli_fetch_array($bugs) ) { ?>
+				<?php $cats = $conn->query("SELECT * FROM categories ORDER BY cat_name;"); ?>
+				<?php while ( $cat = mysqli_fetch_array($cats) ) { ?>
 				<tr>
-					<td><a href="bug.php?bug_id=<?php echo $bug['bug_id']; ?>"><?php echo $bug['bug_id']; ?></a></td>
-					<td><a href="bug.php?bug_id=<?php echo $bug['bug_id']; ?>"><?php echo $bug['bug_name']; ?></a></td>
-					<td><?php echo $bug['assign_to']; ?></td>
-					<td><?php echo $bug['last_date']; ?></td>
+					<td><a href="category.php?cat_id=<?php echo $cat['cat_id']; ?>"><?php echo $cat['cat_id']; ?></a></td>
+					<td><a href="category.php?cat_id=<?php echo $cat['cat_id']; ?>"><?php echo $cat['cat_name']; ?></a></td>
 				</tr>
 				<?php } // Fin While $bugs ?>
 
