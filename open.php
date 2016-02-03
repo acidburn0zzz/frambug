@@ -9,7 +9,7 @@ include('inc/begin.php');
 			</div>
 			
 			<div id="open" >
-				<form id="formopenbug" action="inc/functions.php" method="post">
+				<form id="formopenbug" action="inc/ajax-form.php" method="post">
 					<input type="hidden" name="function" value="openbug" />
 
 					<table class="center">

@@ -3,7 +3,7 @@ CREATE TABLE `comments` (
   `comm_id` int(10) NOT NULL AUTO_INCREMENT,
   `bug_id` int(10) NOT NULL,
   `user_id` int(10) NOT NULL,
-  `comm_date` int(11) NOT NULL COMMENT 'Date creation bug (timestamp)',
+  `comm_date` date NOT NULL,
   `comm_text` text NOT NULL,
   PRIMARY KEY (`comm_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12,10 +12,10 @@ DROP TABLE IF EXISTS `bugs`;
 CREATE TABLE `bugs` (
   `bug_id` int(10) NOT NULL AUTO_INCREMENT,
   `submitted_by` int(10),
-  `submitted_date`  int(11) NOT NULL COMMENT 'Date creation (timestamp)',
+  `submitted_date`  date NOT NULL COMMENT 'Date Creation',
   `cat_id` int(10) NOT NULL,
   `assign_to` int(10),
-  `last_date` int(11) NOT NULL COMMENT 'Date de dernière modif (timestamp)',
+  `last_date` date NOT NULL COMMENT 'Date de dernière modif',
   `bug_name` varchar(64) NOT NULL,
   `bug_text` text NOT NULL,
   `priority` int(1) NOT NULL COMMENT 'De 1 a 5',

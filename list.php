@@ -29,7 +29,7 @@ include('inc/begin.php');
 					<td><a href="bug.php?bug_id=<?php echo $bug['bug_id']; ?>"><?php echo $bug['bug_id']; ?></a></td>
 					<td><a href="bug.php?bug_id=<?php echo $bug['bug_id']; ?>"><?php echo $bug['bug_name']; ?></a></td>
 					<td><?php echo $bug['assign_to']; ?></td>
-					<td><?php echo $bug['last_date']; ?></td>
+					<td><?php echo fundatetime($bug['last_date']); ?></td>
 				</tr>
 				<?php } // Fin While $bugs ?>
 

@@ -3,6 +3,7 @@
 session_start();
 header( 'content-type: text/html; charset=utf-8' );
 include('sql_open.php');
+include('functions.php');
 ?>
 <html>
 	<head>

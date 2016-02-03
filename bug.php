@@ -31,14 +31,14 @@ if ( isset($_GET['bug_id']) && is_numeric($_GET['bug_id'])) {
 			<?php if ( $nb == 1 ) { ?>
 			<div id="edit" >
 
-				<table class="center">
+				<table class="center w100">
 					
 					<tr>
 						<td class="bold" colspan="4"> <?php echo $bug['bug_name']; ?></td>
 					</tr>
 					<tr>
 						<td class="bold">Ajouté par :</td><td><?php echo $bug['submitted_by']; ?></td>
-						<td class="bold">Ouvert le :</td><td><?php echo $bug['submitted_date']; ?></td>
+						<td class="bold">Ouvert le :</td><td><?php echo fundate($bug['submitted_date']); ?></td>
 					</tr>
 					<tr>
 						<td class="bold">Catégorie :</td><td><?php echo $bug['cat_name']; ?></td>
@@ -57,18 +57,42 @@ if ( isset($_GET['bug_id']) && is_numeric($_GET['bug_id'])) {
 				</table>
 
 			</div>
+
+			<div id="team">
+				<div id="teaminfo">
+				<form>
+					<input type="hidden" name="function" value="updatestate" />
+					<input type="hidden" name="bug_id" value="<?php echo $bug['bug_id']; ?>" />
+					<label>Changer l'avancement :</label>
+					<select name="state">
+						<?php for ( $i=0; $i<=100; $i=$i+10) { ?>
+						<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+						<?php } ?>
+					</select>
+					%
+				</form>
+				</div>
+			</div>
 			
 			<div id="comments">
 				<div id="newcomment">
-					<form>
-						<textarea></textarea>
+					<form id="formaddcomment" action="inc/ajax-form.php" method="post">
+						<input type="hidden" name="function" value="addcomm" />
+						<input type="hidden" name="bug_id" value="<?php echo $bug['bug_id']; ?>" />
+						<textarea name="comm_text" rows="20" cols="70" value="" ></textarea>
+						<input type="submit" value="Ajouter le commentaire" />
 					</form>
 				</div>
 
-				<?php $comments = $conn->query("SELECT * FROM comments WHERE bug_id=$bugid ORDER BY comm_date DESC;"); ?>
+				<?php $comments = $conn->query("SELECT * FROM comments c LEFT JOIN users u ON c.user_id=u.user_id WHERE bug_id=$bugid ORDER BY comm_date DESC;"); ?>
 				<?php while ( $comment = mysqli_fetch_array($comments) ) { ?>
 				<div class="comment">
-					<?php echo $comment['comm_text']; ?>
+					<div class="comm_info">
+					<span class="left">Posté par <?php echo $comment['realname']; ?>, le <?php echo fundatetime($comment['comm_date']); ?></span><span class="right">#<?php echo $comment['comm_id']; ?></span>
+					</div>
+					<div class="comm_text">
+						<?php echo $comment['comm_text']; ?>
+					</div>
 				</div>
 				<?php } // Fin while ( $comment = mysqli_fetch_array($comments) ) { ?>
 

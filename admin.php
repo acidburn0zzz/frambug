@@ -6,7 +6,7 @@ include('inc/begin.php');
 			<?php $index=1; ?>
 			
 			<?php if ( isset($_GET['action'] ) && $_GET['action']=="ajouterxxx" ) { ?>
-				<form id="formajouterxxx" action="inc/functions.php" method="post">
+				<form id="formajouterxxx" action="inc/ajax-form.php" method="post">
 					<input type="hidden" name="function" value="ajouterxxx" />
 					<table class="center">
 						<tr><th colspan="2"></th></tr>
@@ -26,7 +26,7 @@ include('inc/begin.php');
 					<?php $nb = $res->num_rows ; ?>
 					<?php if ( $nb == 1 ) { ?>
 					<?php $data = mysqli_fetch_array($res); ?>
-					<form id="formmodifierxxx" action="inc/functions.php" method="post">
+					<form id="formmodifierxxx" action="inc/ajax-form.php" method="post">
 						<input type="hidden" name="function" value="modifierxxx" />
 						<input type="hidden" name="id" value="<?php echo $data['id']; ?>" />
 						<table class="center">
@@ -62,7 +62,7 @@ include('inc/begin.php');
 					<td><?php echo $data['yyy']; ?></td>
 					<td>
 						<a href="?action=modifierxxx&id=<?php echo $data['id']; ?>">Modifier</a> -
-						<form style="display: inline;" class="asupprimerxxx" method="post" action="inc/functions.php">
+						<form style="display: inline;" class="asupprimerxxx" method="post" action="inc/ajax-form.php">
 							<input type="hidden" name="function" value="supprimerxxx" />
 							<input type="hidden" name="id" value="<?php echo $data['id']; ?>" />
 							<a href="#" onclick="return(confirm('Etes-vous sûr de vouloir supprimer xxxx?'));" >Supprimer</a>
