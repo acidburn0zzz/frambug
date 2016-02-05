@@ -53,8 +53,8 @@ if ( isset($_GET['bug_id']) && is_numeric($_GET['bug_id'])) {
 						<td><?php echo $bug['assign_to']; ?></td>
 						<td class="bold">Avancement :</td>
 						<td>
-						<?php //echo $bug['state']."%"; ?>
-							<form class="inline">
+						<?php if ($isteam) { ?>
+							<form class="inline" method="post" action="inc/ajax-form.php" name="formupdatestate" id="formupdatestate">
 		                                        	<input type="hidden" name="function" value="updatestate" />
 	                		                        <input type="hidden" name="bug_id" value="<?php echo $bug['bug_id']; ?>" />
         	                                		<select name="state" >
@@ -64,6 +64,9 @@ if ( isset($_GET['bug_id']) && is_numeric($_GET['bug_id'])) {
                                         			</select>
 								<input type="image" src="img/ok.svg" height=20px width=20px class="top" />
 			                                </form>
+						<?php } else { // du isteam ?>
+						<?php echo $bug['state']."%"; ?>
+						<?php } // fin if($isteam) ?>
 						</td>
 					</tr>
 					<tr>

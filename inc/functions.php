@@ -2,9 +2,12 @@
 
 $isadmin=false;
 $isteam=false;
+$isuser=false;
 
 if (isset($_SESSION['level']) && is_numeric($_SESSION['level']))
 {
+	if ( $_SESSION['level'] > 0 )
+		$isuser=true;
 	if ( $_SESSION['level'] > 1 )
 		$isteam=true;
 	if ( $_SESSION['level'] > 2 )

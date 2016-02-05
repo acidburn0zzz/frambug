@@ -52,6 +52,7 @@ include('functions.php');
 				<?php } else { ?>
 				<li><a href="user.php" title="Se connecter">Se connecter</a></li>
 				<?php } ?>
+				<li><a href="https://github.com/aaaaadrien/frambug" target="_blank" >git</a></li>
 
 			</ul>
 		</div>

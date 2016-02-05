@@ -35,16 +35,17 @@ if (isset ($_POST['function']))
 	
 	if ($_POST['function'] == "addcomm")
 	{
-		if(isset($_POST['comm_text']) && isset($_POST['bug_id']) && is_numeric($_POST['bug_id']))
+		if(isset($_POST['comm_text']) && isset($_POST['bug_id']) && is_numeric($_POST['bug_id']) && is_numeric($_SESSION['user_id']))
 		{
 			$bug_id=$_POST['bug_id'];
 			$comm_text=$_POST['comm_text'];
 			$now = time();
-			$user_id="0";
+			$user_id=$_SESSION['user_id'];
 
 			if ($comm_text != '')
 			{
 				$reponse=$conn->query('INSERT INTO comments(bug_id, user_id, comm_date, comm_text) VALUES('.$bug_id.','.$user_id.', '.$now.', "'.$comm_text.'");');
+				$reponse=$conn->query('UPDATE bugs SET last_date='.$now.' WHERE bug_id='.$bug_id.';');
 				$reponse='ok';
 			}
 			else
@@ -58,6 +59,30 @@ if (isset ($_POST['function']))
 		}
 		echo json_encode(['reponse' => $reponse]);
 	} // Fin ($POST['function'] == "addcomm")
+
+	if ($_POST['function'] == "updatestate")
+	{
+		if(isset($_POST['state']) && is_numeric($_POST['state']) && isset($_POST['bug_id']) && is_numeric($_POST['bug_id']) && is_numeric($_SESSION['user_id']))
+		{
+			$bug_id=$_POST['bug_id'];
+			$state=$_POST['state'];
+			$now = time();
+			$user_id=$_SESSION['user_id'];
+			
+			$reponse=$conn->query('UPDATE bugs SET state='.$state.', last_date='.$now.' WHERE bug_id='.$bug_id.';');
+			
+			$comm_text="Avancement : ".$state."%.";
+			$reponse=$conn->query('INSERT INTO comments(bug_id, user_id, comm_date, comm_text) VALUES('.$bug_id.','.$user_id.', '.$now.', "'.$comm_text.'");');
+
+			$reponse='ok';
+		}
+		else
+		{
+			$reponse = 'Tous les champs ne sont pas parvenus';
+		}
+		echo json_encode(['reponse' => $reponse]);
+	} // Fin if ($_POST['function'] == "updatestate")
+
 
 	if ($_POST['function'] == "login") {
 		$loginOK = false;

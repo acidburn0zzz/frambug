@@ -4,6 +4,9 @@ include('inc/begin.php');
 	
 		<div id="corps">
 			
+			<?php if ($isuser) {?>
+			User déjà connecté
+			<?php } else { // du if ($isuser) ?>
 			<div id="login">
 				<h1>Connexion</h1>
 				<form action="inc/ajax-form.php" method="post" id="formlogin" name="formlogin" >
@@ -23,7 +26,7 @@ include('inc/begin.php');
 					</table>
 				</form>
 			</div>
-
+			<?php } // fin if ($isuser) ?>
 
 
                         <div id="logo">
