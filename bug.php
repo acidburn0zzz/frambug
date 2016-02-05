@@ -50,7 +50,13 @@ if ( isset($_GET['bug_id']) && is_numeric($_GET['bug_id'])) {
 					</tr>
 					<tr>					
 						<td class="bold">Assigné à :</td>
-						<td><?php echo $bug['assign_to']; ?></td>
+						<td>
+						<?php if ($isteam) { ?>
+						<?php echo $bug['assign_to']; // A modif?>
+						<?php } else { // du isteam ?>
+						<?php echo $bug['assign_to']; ?>
+						<?php } // fin if($isteam) ?>
+						</td>
 						<td class="bold">Avancement :</td>
 						<td>
 						<?php if ($isteam) { ?>
