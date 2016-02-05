@@ -5,7 +5,7 @@ include('inc/begin.php');
 		<div id="corps">
 	
 			<div id="welcome">
-				<h1>Frambug : Bienvenue</h1> 
+				<h1>Frambug : Bienvenue <?php if ( isset($_SESSION['realname'])) echo $_SESSION['realname']; ?></h1> 
 			</div>
 			
 			<div class="h2" ></div>

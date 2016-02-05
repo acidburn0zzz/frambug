@@ -41,8 +41,15 @@ include('functions.php');
 				<li><a href="index.php" title="Accueil">Accueil</a></li>
 				<li><a href="open.php" title="Ouvrir un bug">Ouvrir un bug</a></li>
 				<li><a href="list.php" title="Liste des bugs">Liste des bugs</a></li>
-				<li><a href="admin_category.php" title="Liste des catégories">Liste des catégories</a></li>
 				
-				<li><a href="admin.php"> Admin</a></li>
+				<?php if ($isadmin) { ?>
+				<li><a href="admin.php">Admin</a></li>
+				<li><a href="admin_category.php" title="Liste des catégories">Liste des catégories</a></li>
+				<?php } ?>
+				
+				<?php if ( isset($_SESSION['user_id']) ) { ?>
+				<li><a href="user.php" title="Mon profil">Mon profil</a></li>
+				<?php } ?>
+
 			</ul>
 		</div>

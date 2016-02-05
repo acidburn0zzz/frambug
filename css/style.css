@@ -117,6 +117,12 @@ a:hover {
 .left{
 	text-align: left;
 }
+.top{
+	vertical-align: top;
+}
+.bottom{
+	vertical-align: bottom;
+}
 .p0
 {
 	padding: 0;
@@ -148,6 +154,10 @@ a:hover {
 }
 .w100{
 	width: 100%;
+}
+.s20{
+	height: 20px;
+	width: 20px;
 }
 
 /* FORMATS */
@@ -220,3 +230,4 @@ a:hover {
 }
 .comm_text{
 }
+

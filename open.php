@@ -75,7 +75,6 @@ include('inc/begin.php');
 			
 		</div>
 
-		<script src="js/formulaires-ajax.js"></script> 	
 <?php
 include('inc/end.php');
 ?>

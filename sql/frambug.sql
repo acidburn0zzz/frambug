@@ -45,6 +45,6 @@ CREATE TABLE `users` (
 
 
 -- Jeu de test
-insert into categories values (1,'catégorie1');
-insert into users values (1,'adrien','adrien','Adrien D', '3', 'adrien@lan.local', '0', '1');
+INSERT INTO categories VALUES (1,'catégorie1');
+INSERT INTO users VALUES (1,'adrien',sha1('adrien'),'Adrien D', '3', 'adrien@lan.local', '0', '1');
 

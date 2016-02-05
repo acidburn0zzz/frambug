@@ -1,5 +1,16 @@
 <?php
 
+$isadmin=false;
+$isteam=false;
+
+if (isset($_SESSION['level']) && is_numeric($_SESSION['level']))
+{
+	if ( $_SESSION['level'] > 1 )
+		$isteam=true;
+	if ( $_SESSION['level'] > 2 )
+		$isadmin=true;
+}
+
 function fundatetime($time) {
 
 	setlocale(LC_TIME, 'fr_FR.UTF8');
