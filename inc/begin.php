@@ -49,6 +49,8 @@ include('functions.php');
 				
 				<?php if ( isset($_SESSION['user_id']) ) { ?>
 				<li><a href="user.php" title="Mon profil">Mon profil</a></li>
+				<?php } else { ?>
+				<li><a href="user.php" title="Se connecter">Se connecter</a></li>
 				<?php } ?>
 
 			</ul>
